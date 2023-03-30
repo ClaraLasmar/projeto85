@@ -4,40 +4,38 @@ ctx = canvas.getContext("2d");
 greencar_width = 75;
 greencar_height = 100;
 
-backgroundImage = "parkingLot.jpg";
-greencarImage = "car2.png";
+background_image = "parkingLot.jpg";
+greencar_image = "car2.png";
 
+//greencar_x = 75;
+//greencar_y = 325;
 greencar_x = 5;
-greencar_y = 225;
-//Defina a posição inicial para uma imagem de carro.
+greencar_y= 225;
 
 function add() {
-	background_imgTag = new Image();
-	background_imgTag.onload = uploadBackground;
-	background_imgTag.src = background_image;
-	//carregar carro e imagens de fundo na tela.
-	greencar_imgTag = new Image();
-	greencar_imgTag.onload = uploadgreencar;
-	greencar_imgTag.src = greencar_image;
+	background_imgTag = new Image(); 				//defining a variable with a new image
+	background_imgTag.onload = uploadBackground; 	// setting a function, onloading this variable
+	background_imgTag.src = background_image;   	// load image
+
+	greencar_imgTag = new Image(); 				//defining a variable with a new image
+	greencar_imgTag.onload = uploadgreencar; 	// setting a function, onloading this variable
+	greencar_imgTag.src = greencar_image;  		 // load image
 
 }
 
 function uploadBackground() {
-	ctx.drawImage(background_imgTag, 0, 0, canvas.width,canvas.height);
-	//Defina a função ‘uploadBackground’
-
+	ctx.drawImage(background_imgTag, 0, 0, canvas.width, canvas.height);
 }
 
-function uploadGreenCar() {
-	//Defina a função ‘uploadGreenCar’.
-	ctx.drawImage(greencar_imgTag, greencar_x,greencar_y,greencar_width, greencar_height);
+function uploadgreencar() {
+	ctx.drawImage(greencar_imgTag, greencar_x,greencar_y, greencar_width, greencar_height);
 	
 }
 
 
-window.addEventListener("keydown", myKeyDown);
+window.addEventListener("keydown", my_keydown);
 
-function myKeyDown(e)
+function my_keydown(e)
 {
 	keyPressed = e.keyCode;
 	console.log(keyPressed);
@@ -73,45 +71,45 @@ function up()
 	if(greencar_y >=0)
 	{
 		greencar_y = greencar_y - 10;
-console.log("When up arrow is pressed, x =" + greencar_x + " | y = " +greencar_y");
-uploadBackground();
-uploadgreencar();
-}
-	//Definir função para mover o carro para cima
+		console.log("When up arrow is pressed,  x = " + greencar_x + " | y = " +greencar_y);
+		 uploadBackground();
+		 uploadgreencar();
+		
+	}
 }
 
 function down()
 {
 	if(greencar_y <=350)
 	{
-		greencar_y = greencar_y + 10;
-console.log("When down arrow is pressed, x =" + greencar_x + " | y = " +greencar_y");
-uploadBackground();
-uploadgreencar();
-}
-
-//Definir função para mover o carro para baixo
+		greencar_y =greencar_y+ 10;
+		console.log("When down arrow is pressed,  x = " + greencar_x + " | y = " +greencar_y);
+		uploadBackground();
+		uploadgreencar();
+		
+	}
 }
 
 function left()
 {
-	if(greencar_y >=0)
+	if(greencar_x >= 0)
 	{
-		greencar_x = greencar_x - 10;
-console.log("When left arrow is pressed,x =" + greencar_x + "| y = " +greencar_y");
-uploadBackground();
-uploadgreencar();
-}
-	//Definir função para mover o carro para o lado esquerdo
+		greencar_x =greencar_x - 10;
+		console.log("When left arrow is pressed,  x = " + greencar_x + " | y = " +greencar_y);
+		uploadBackground();
+		 uploadgreencar();
+		
+	}
 }
 
 function right()
 {
-	if(greencar_y <=750)
+	if(greencar_x <= 750)
 	{
-		greencar_y = greencar_y + 10;
-console.log("When right arrow is pressed,x =" + greencar_x + "| y = " +greencar_y");
-uploadBackground();
-uploadgreencar();
-}//Definir função para mover o lado direito do carro
+		greencar_x =greencar_x + 10;
+		console.log("When right arrow is pressed,  x = " + greencar_x + " | y = " +greencar_y);
+		uploadBackground();
+		uploadgreencar();
+		
+   }
 }
